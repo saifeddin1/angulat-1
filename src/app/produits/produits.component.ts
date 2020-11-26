@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Produit } from '../model/produit.model'
+import { ProduitService } from '../service/produit.service'
 @Component({
   selector: 'app-produits',
   templateUrl: './produits.component.html',
   styleUrls: ['./produits.component.css']
 })
 export class ProduitsComponent implements OnInit {
-  produits:String[];
-  constructor() { 
-    this.produits = ["PC Asus", "Imprimante Epson", "Tablette Samsung"];
+  produits: Produit[];
+  constructor(private produitService: ProduitService) {
+    this.produits = produitService.listeProduits();
   }
 
   ngOnInit(): void {
